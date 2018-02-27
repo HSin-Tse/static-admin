@@ -85,9 +85,8 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js --env=jsdom",
-    "predeploy": "node scripts/build.js",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "live": "cd  ./dist  &liveload index.html "
   },
   "jest": {
     "moduleFileExtensions": [
@@ -134,6 +133,5 @@
   },
   "eslintConfig": {
     "extends": "react-app"
-  },
-  "homepage": "http://MuYunyun.github.io/reactSPA"
+  }
 }
