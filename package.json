@@ -4,15 +4,10 @@
   "private": true,
   "dependencies": {
     "antd": "^3.2.1",
-    "babel": "^6.23.0",
-    "babel-cli": "^6.24.1",
-    "diana": "0.2.9",
     "draftjs-to-html": "^0.7.2",
     "draftjs-to-markdown": "^0.4.2",
     "fetch-jsonp": "^1.0.6",
     "history": "^4.7.2",
-    "less": "^2.7.2",
-    "less-loader": "^4.0.5",
     "moment": "^2.18.1",
     "photoswipe": "^4.1.2",
     "prop-types": "^15.5.10",
@@ -28,6 +23,11 @@
     "screenfull": "^3.3.2"
   },
   "devDependencies": {
+    "diana": "0.2.9",
+    "babel": "^6.23.0",
+    "babel-cli": "^6.24.1",
+    "less": "^2.7.2",
+    "less-loader": "^4.0.5",
     "autoprefixer": "7.1.2",
     "babel-core": "6.25.0",
     "babel-eslint": "7.2.3",
@@ -84,9 +84,9 @@
   },
   "scripts": {
     "start": "node scripts/start.js",
-    "build": "node scripts/build.js",
+    "build": " node scripts/build.js",
     "deploy": "gh-pages -d build",
-    "live": "cd  ./dist  &liveload index.html "
+    "live": "serve -s dist"
   },
   "jest": {
     "moduleFileExtensions": [
