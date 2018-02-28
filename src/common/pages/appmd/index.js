@@ -1,7 +1,7 @@
 import React from 'react';
 import './index.less'
 
-export default class Gallery extends React.Component {
+export default class APP extends React.Component {
 
     render() {
 

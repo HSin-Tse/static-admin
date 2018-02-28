@@ -14,6 +14,7 @@ import Search from 'pages/search'
 import Waterfall from 'pages/waterfall'
 import AppMd from 'pages/appmd'
 import H5Md from 'pages/h5md'
+import Test from 'pages/test'
 
 const { Content } = Layout
 
@@ -34,6 +35,7 @@ export default class Contents extends React.Component {
         <Route path="/waterfall" component={Waterfall} />
         <Route path="/app" component={AppMd} />
         <Route path="/h5" component={H5Md} />
+        <Route path="/test" component={Test} />
       </Content>
     );
   }

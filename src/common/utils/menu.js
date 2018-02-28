@@ -11,6 +11,13 @@ export const allMenu = [
             {name: 'app', url: 'app'},
             {name: 'h5', url: 'h5'},
         ]
+    }, {
+        name: ' Test',
+        url: 'md',
+        icon: 'bars',
+        children: [
+            {name: 'test', url: 'test'},
+        ]
     }
     // , {
     //     name: '音乐模块',
