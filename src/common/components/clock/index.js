@@ -27,7 +27,7 @@ export default class Clock extends React.Component {
     render() {
         return (
             <div>
-                <h1 className= "animated swing"  style={{ color: '#f0f' }}> {this.props.tsee}</h1>
+                {/*<h1 className= "animated swing"  style={{ color: '#f0f' }}> {this.props.tsee}</h1>*/}
                 <h1>{this.state.date.toLocaleTimeString()}</h1>
             </div>
         );
