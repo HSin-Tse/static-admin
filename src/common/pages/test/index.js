@@ -8,11 +8,6 @@ import {Card, Button, Input, Progress, Layout} from 'antd';
 
 const {Meta} = Card;
 const {Sider, Content} = Layout;
-const MULTIPLE_SOURCES = [
-    {src: 'http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4', type: 'video/mp4'},
-    {src: 'http://clips.vorwaerts-gmbh.de/big_buck_bunny.ogv', type: 'video/ogv'},
-    {src: 'http://clips.vorwaerts-gmbh.de/big_buck_bunny.webm', type: 'video/webm'}
-]
 
 export default class Tse extends React.Component {
     constructor(props) {
@@ -37,9 +32,6 @@ export default class Tse extends React.Component {
         })
     }
 
-    componentWillMount() {
-        console.log("tse componentWillMount");
-    }
 
     componentDidMount() {
 
@@ -48,7 +40,6 @@ export default class Tse extends React.Component {
         axios.get(url).then((response) => {
 
             console.log('tse ok resr: ' + response);
-            // console.log('tse ok resr: ' + JSON.stringify(response));
             console.log('tse ok resr: ' + response.data);
 
             this.setState({
@@ -110,13 +101,13 @@ export default class Tse extends React.Component {
 
         var text = this.state.liked ? '喜欢' : '不喜欢';
         const pgs = programs.map((program) =>
-            <div class="inline-b-item" >
+            <div class="inline-b-item">
                 <Card
 
                     onClick={this.changeSong.bind(this, program)}
                     hoverable
                     style={{width: 240, height: 400, margin: 10}}
-                    cover={<img style={{border:'1px solid grey', width: 240,height: 240, margin: 0}} onClick={this.onClickTest}
+                    cover={<img style={{border: '1px solid grey', width: 240, height: 240, margin: 0}}
                                 src={program.imgPath}></img>}
                     title={program.name}
                 ><Meta
