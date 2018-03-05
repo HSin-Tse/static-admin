@@ -110,18 +110,16 @@ export default class Tse extends React.Component {
 
         var text = this.state.liked ? '喜欢' : '不喜欢';
         const pgs = programs.map((program) =>
-            <div>
+            <div class="inline-b-item">
                 <Card
 
                     onClick={this.changeSong.bind(this, program)}
                     hoverable
-                    style={{width: 240 , margin:10} }
-                    cover={<img onClick={this.onClickTest}
+                    style={{width: 240, height: 400, margin: 10}}
+                    cover={<img style={{width: 240, margin: 0}} onClick={this.onClickTest}
                                 src={program.imgPath}></img>}
                     title={program.name}
                 ><Meta
-
-
                     description={program.intro}
                 />
 
@@ -130,10 +128,10 @@ export default class Tse extends React.Component {
         );
         return (
 
-            <div className="mdd">
+            <div>
                 <Layout>
 
-                    <Sider style={{background: '#fff', margin: '20px'}}>
+                    <Sider style={{background: '#fff', margin: '10px'}}>
                         <div>
                             <Clock tsee="asdf"></Clock>
                             <ReactPlayer width='10%'
@@ -168,8 +166,10 @@ export default class Tse extends React.Component {
                         </div>
                     </Sider>
                     <Layout>
-                        <Content style={{background: '#fff', margin: '20px'}}>
-                            {pgs}
+                        <Content>
+                            <div class=" inline-b">
+                                {pgs}
+                            </div>
                         </Content>
                     </Layout>
                 </Layout>
