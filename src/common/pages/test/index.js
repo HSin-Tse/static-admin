@@ -4,9 +4,10 @@ import axios from "axios";
 
 import ReactPlayer from 'react-player'
 import Clock from 'components/clock'
-import {Button, Input, Progress, Layout} from 'antd';
+import {Card, Button, Input, Progress, Layout} from 'antd';
 
-const {Header, Footer, Sider, Content} = Layout;
+const {Meta} = Card;
+const {Sider, Content} = Layout;
 const MULTIPLE_SOURCES = [
     {src: 'http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4', type: 'video/mp4'},
     {src: 'http://clips.vorwaerts-gmbh.de/big_buck_bunny.ogv', type: 'video/ogv'},
@@ -18,7 +19,6 @@ export default class Tse extends React.Component {
         super(props);
         console.log("tse constructor");
         this.state = {
-            stra: "hello",
             liked: false,
             playing: true,
             loaded: 0,
@@ -52,7 +52,6 @@ export default class Tse extends React.Component {
             console.log('tse ok resr: ' + response.data);
 
             this.setState({
-                stra: JSON.stringify(response.data.code),
                 programs: response.data.data
             });
 
@@ -77,9 +76,7 @@ export default class Tse extends React.Component {
         console.log('tse changeSong: ')
         this.setState({musicurl: program.liveUrl})
     };
-    setPlaybackRate = e => {
-        this.setState({playbackRate: parseFloat(e.target.value)})
-    }
+
 
     onSeekMouseDown = e => {
         this.setState({seeking: true})
@@ -97,12 +94,13 @@ export default class Tse extends React.Component {
     }
     onProgress = state => {
         console.log('onProgress', state)
-        // We only want to update time slider if we are not currently seeking
         if (!this.state.seeking) {
             this.setState(state)
         }
     }
-
+    onClickTest = state => {
+        console.log('tse onClickTest')
+    };
     ref = player => {
         this.player = player
     }
@@ -113,9 +111,21 @@ export default class Tse extends React.Component {
         var text = this.state.liked ? '喜欢' : '不喜欢';
         const pgs = programs.map((program) =>
             <div>
-                <h3 onClick={this.changeSong.bind(this, program)} key={program.name}>{program.name}
-                    : {program.liveUrl}  </h3>
-                <img style={{height: '100px', width: '100px'}}  src={program.imgPath}></img>
+                <Card
+
+                    onClick={this.changeSong.bind(this, program)}
+                    hoverable
+                    style={{width: 240 , margin:10} }
+                    cover={<img onClick={this.onClickTest}
+                                src={program.imgPath}></img>}
+                    title={program.name}
+                ><Meta
+
+
+                    description={program.intro}
+                />
+
+                </Card>
             </div>
         );
         return (
