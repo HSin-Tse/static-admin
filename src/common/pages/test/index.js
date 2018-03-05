@@ -7,7 +7,7 @@ import Clock from 'components/clock'
 import {Card, Button, Input, Progress, Layout} from 'antd';
 
 const {Meta} = Card;
-const {Sider, Content} = Layout;
+const {Sider, Content, Footer} = Layout;
 
 export default class Tse extends React.Component {
     constructor(props) {
@@ -101,15 +101,15 @@ export default class Tse extends React.Component {
 
         var text = this.state.liked ? '喜欢' : '不喜欢';
         const pgs = programs.map((program) =>
-            <div class="flex-item">
-                <Card
+            <div  style={{border: '1px solid grey'}}>
+                <Card className="card-test"
 
-                    onClick={this.changeSong.bind(this, program)}
-                    hoverable
-                    style={{width: 240, height: 400, margin: 10}}
-                    cover={<img style={{border: '1px solid grey', width: 240, height: 240, margin: 0}}
-                                src={program.imgPath}></img>}
-                    title={program.name}
+                      onClick={this.changeSong.bind(this, program)}
+                      hoverable
+                      style={{width: 240, height: 400, margin: 10 , }}
+                      cover={<img style={{border: '1px solid grey', width: 240, height: 240, margin: 0}}
+                                  src={program.imgPath}></img>}
+                      title={program.name}
                 ><Meta
                     description={program.intro}
                 />
@@ -158,7 +158,7 @@ export default class Tse extends React.Component {
                     </Sider>
                     <Layout>
                         <Content>
-                            <div class="flex">
+                            <div className="flex">
                                 {pgs}
                             </div>
                         </Content>
