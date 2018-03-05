@@ -110,13 +110,13 @@ export default class Tse extends React.Component {
 
         var text = this.state.liked ? '喜欢' : '不喜欢';
         const pgs = programs.map((program) =>
-            <div class="inline-b-item">
+            <div class="inline-b-item" >
                 <Card
 
                     onClick={this.changeSong.bind(this, program)}
                     hoverable
                     style={{width: 240, height: 400, margin: 10}}
-                    cover={<img style={{width: 240, margin: 0}} onClick={this.onClickTest}
+                    cover={<img style={{border:'1px solid grey', width: 240,height: 240, margin: 0}} onClick={this.onClickTest}
                                 src={program.imgPath}></img>}
                     title={program.name}
                 ><Meta
