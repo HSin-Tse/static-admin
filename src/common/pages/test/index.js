@@ -101,7 +101,7 @@ export default class Tse extends React.Component {
 
         var text = this.state.liked ? '喜欢' : '不喜欢';
         const pgs = programs.map((program) =>
-            <div class="inline-b-item">
+            <div class="flex-item">
                 <Card
 
                     onClick={this.changeSong.bind(this, program)}
@@ -158,7 +158,7 @@ export default class Tse extends React.Component {
                     </Sider>
                     <Layout>
                         <Content>
-                            <div class=" inline-b">
+                            <div class="flex">
                                 {pgs}
                             </div>
                         </Content>
