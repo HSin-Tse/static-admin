@@ -12,7 +12,7 @@ export default class Tools extends React.Component {
     render() {
         return (
             <div>
-                <Tabs defaultActiveKey="1">
+                <Tabs defaultActiveKey="2">
                     <TabPane tab="工资帽" key="1"><Salary test={'test'} /></TabPane>
                     <TabPane tab="小房租" key="2"><House /></TabPane>
                     <TabPane tab="身体指数" key="3"><Bmi /></TabPane>

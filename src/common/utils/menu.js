@@ -12,11 +12,18 @@ export const allMenu = [
             {name: 'h5', url: 'h5'},
         ]
     }, {
-        name: ' Test',
-        url: 'md',
+        name: 'Test',
+        url: 'test',
         icon: 'bars',
         children: [
             {name: 'test', url: 'test'},
+        ]
+    }, {
+        name: 'Home',
+        url: 'home',
+        icon: 'bars',
+        children: [
+            {name: 'home', url: 'home'},
         ]
     }
     , {

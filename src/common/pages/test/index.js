@@ -7,9 +7,8 @@ import Clock from 'components/clock'
 import {Card, Button, Input, Progress, Layout} from 'antd';
 
 const {Meta} = Card;
-const {Sider, Content, Footer} = Layout;
-
-export default class Tse extends React.Component {
+const {Sider, Content} = Layout;
+export default class Test extends React.Component {
     constructor(props) {
         super(props);
         console.log("tse constructor");
@@ -19,7 +18,8 @@ export default class Tse extends React.Component {
             loaded: 0,
             per: 0,
             playbackRate: 1.0,
-            musicurl: 'http://rscdn.ajmide.com/c_250/250.m3u8',
+            // musicurl: 'http://rscdn.ajmide.com/c_250/250.m3u8',
+            musicurl: null,
             programs: []
         };
     }
@@ -33,15 +33,31 @@ export default class Tse extends React.Component {
     }
 
 
+
     componentDidMount() {
 
-        const url = "http://s.ajmide.com/searchProgram.php?type=3&page=0&filter=0&value=%E5%8A%A8%E6%84%9F101"
+
+        // axios.get('http://a.ajmide.com/v7/get_play_list.php', {
+        //     params: {
+        //         id: 10062,
+        //         t: 'p'
+        //     }
+        // }).then( (response) => {
+        //     console.log(response);
+        //     this.setState({
+        //         musicurl: response.data.data[0].liveUrl
+        //     });
+        // }).catch(function (error) {
+        //     console.log(error);
+        // });
+
+
+        const url = "http://s.ajmide.com/searchProgram.php?type=3&page=0&filter=0&value=动感101"
 
         axios.get(url).then((response) => {
 
             console.log('tse ok resr: ' + response);
             console.log('tse ok resr: ' + response.data);
-
             this.setState({
                 programs: response.data.data
             });
@@ -49,6 +65,8 @@ export default class Tse extends React.Component {
         }).catch(function (error) {
             console.log('tse resr: ' + String(error));
         });
+
+
     }
 
     handleClick = () => {
@@ -101,12 +119,12 @@ export default class Tse extends React.Component {
 
         var text = this.state.liked ? '喜欢' : '不喜欢';
         const pgs = programs.map((program) =>
-            <div  style={{border: '1px solid grey'}}>
+            <div key={program.imgPath}  style={{border: '1px solid grey'}}>
                 <Card className="card-test"
 
                       onClick={this.changeSong.bind(this, program)}
                       hoverable
-                      style={{width: 240, height: 400, margin: 10 , }}
+                      style={{width: 240, height: 400, margin: 4,}}
                       cover={<img style={{border: '1px solid grey', width: 240, height: 240, margin: 0}}
                                   src={program.imgPath}></img>}
                       title={program.name}
@@ -158,6 +176,7 @@ export default class Tse extends React.Component {
                     </Sider>
                     <Layout>
                         <Content>
+
                             <div className="flex">
                                 {pgs}
                             </div>
