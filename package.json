@@ -13,8 +13,10 @@
     "photoswipe": "^4.1.2",
     "prop-types": "^15.5.10",
     "react": "^16.2.0",
+    "react-dock": "^0.2.4",
     "react-dom": "^16.2.0",
     "react-draft-wysiwyg": "^1.10.0",
+    "react-json-view": "^1.16.1",
     "react-player": "^1.2.1",
     "react-redux": "^5.0.5",
     "react-router": "^4.1.1",
@@ -22,6 +24,7 @@
     "react-router-redux": "^5.0.0-alpha.9",
     "redux": "^3.6.0",
     "redux-actions": "^2.0.3",
+    "redux-slider-monitor": "^2.0.0-1",
     "screenfull": "^3.3.2"
   },
   "devDependencies": {

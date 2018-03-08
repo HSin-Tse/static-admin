@@ -61,7 +61,7 @@ export default class Container extends React.Component {
                         </a> :
 
                         <a href="http://121.40.161.184" target='_blank' rel='noopener noreferrer'>
-                            <img src={require('../images/favicon.ico')} width="40" alt="logo" className="github circular--squareP" />
+                            <img src={require('../images/tse.jpg')} width="40" alt="logo" className="github circular--squareP" />
                         </a>}
                     {this.state.theme === 'light' ? <span className="author">ajmide</span> :
                         <span className="author white">ajmide</span>}
