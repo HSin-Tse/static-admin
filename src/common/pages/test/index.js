@@ -5,13 +5,15 @@ import axios from "axios";
 import ReactPlayer from 'react-player'
 import Clock from 'components/clock'
 import {Card, Button, Input, Progress, Layout} from 'antd';
+import {observer} from 'mobx-react';
+import {newState} from "../../../client/netdevTools";
 
 const {Meta} = Card;
 const {Sider, Content} = Layout;
+@observer
 export default class Test extends React.Component {
     constructor(props) {
         super(props);
-        console.log("tse constructor");
         this.state = {
             liked: false,
             playing: true,
@@ -56,8 +58,6 @@ export default class Test extends React.Component {
 
         axios.get(url).then((response) => {
 
-            console.log('tse ok resr: ' + response);
-            console.log('tse ok resr: ' + response.data);
             this.setState({
                 programs: response.data.data
             });
@@ -73,7 +73,7 @@ export default class Test extends React.Component {
         this.setState(prevState => ({
             liked: !prevState.liked
         }));
-    }
+    };
     playPause = () => {
         this.setState({playing: !this.state.playing})
     };
@@ -82,8 +82,12 @@ export default class Test extends React.Component {
         this.setState({playbackRate: e.target.value})
     };
     changeSong = (program, e) => {
-        console.log('tse changeSong: ')
         this.setState({musicurl: program.liveUrl})
+    };
+    changeSongAll = (program, e) => {
+        // this.setState({musicurl: program.liveUrl})
+
+        {newState.setMusic(program.liveUrl)}
     };
 
 
@@ -98,17 +102,16 @@ export default class Test extends React.Component {
         this.player.seekTo(parseFloat(e.target.value))
     }
     onDuration = (duration) => {
-        console.log('onDuration', duration)
         this.setState({duration})
     }
     onProgress = state => {
-        console.log('onProgress', state)
         if (!this.state.seeking) {
             this.setState(state)
         }
     }
     onClickTest = state => {
         console.log('tse onClickTest')
+
     };
     ref = player => {
         this.player = player
@@ -122,7 +125,8 @@ export default class Test extends React.Component {
             <div key={program.imgPath}  style={{border: '1px solid grey'}}>
                 <Card className="card-test"
 
-                      onClick={this.changeSong.bind(this, program)}
+                      // onClick={this.changeSong.bind(this, program)}
+                      onClick={this.changeSongAll.bind(this, program)}
                       hoverable
                       style={{width: 240, height: 400, margin: 4,}}
                       cover={<img style={{border: '1px solid grey', width: 240, height: 240, margin: 0}}
@@ -153,6 +157,7 @@ export default class Test extends React.Component {
                                          onProgress={this.onProgress}
                             />
                             <Button onClick={this.playPause}>{playing ? 'Pause' : 'Play'}</Button>
+                            <Button onClick={this.onClickTest}>Test Total</Button>
                             <Button type="danger" onClick={this.handleClick}>
                                 {text}
                             </Button>
@@ -176,8 +181,10 @@ export default class Test extends React.Component {
                     </Sider>
                     <Layout>
                         <Content>
+                            <Button onClick={this.playPause}>{playing ? 'Pause' : 'Play'}</Button>
 
                             <div className="flex">
+
                                 {pgs}
                             </div>
                         </Content>

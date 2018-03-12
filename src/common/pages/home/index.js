@@ -1,6 +1,6 @@
 import React from 'react';
 import './index.less'
-import axios from "axios";
+// import axios from "axios";
 
 import ReactPlayer from 'react-player'
 import Clock from 'components/clock'
@@ -15,7 +15,6 @@ const TabPane = Tabs.TabPane;
 export default class Home extends React.Component {
     constructor(props) {
         super(props);
-        console.log("tse constructor");
         this.state = {
             liked: false,
             playing: true,
@@ -40,10 +39,8 @@ export default class Home extends React.Component {
 
         const url = "http://s.ajmide.com/searchProgram.php?type=3&page=0&filter=0&value=动感101"
 
-        axios.get(url).then((response) => {
+        window.ax.get(url).then((response) => {
 
-            console.log('tse ok resr: ' + response);
-            console.log('tse ok resr: ' + response.data);
 
             this.setState({
                 programs: response.data.data

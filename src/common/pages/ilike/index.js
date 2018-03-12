@@ -43,8 +43,6 @@ export default class Ilike extends React.Component {
 
         axios.get(url).then((response) => {
 
-            console.log('tse ok resr: ' + response);
-            console.log('tse ok resr: ' + response.data);
 
             this.setState({
                 programsLike: response.data.data,
