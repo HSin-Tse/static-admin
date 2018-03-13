@@ -21,7 +21,7 @@ export default class Test extends React.Component {
             per: 0,
             playbackRate: 1.0,
             // musicurl: 'http://rscdn.ajmide.com/c_250/250.m3u8',
-            musicurl: null,
+            musicurl: newState.music,
             programs: []
         };
     }
@@ -84,32 +84,26 @@ export default class Test extends React.Component {
         this.setState({musicurl: program.liveUrl})
     };
     changeSongAll = (program, e) => {
-        // this.setState({musicurl: program.liveUrl})
-
-        {
-            newState.setMusic(program.liveUrl)
-        }
+        newState.setMusic(program.liveUrl)
     };
-
-
     onSeekMouseDown = e => {
         this.setState({seeking: true})
-    }
+    };
     onSeekChange = e => {
         this.setState({played: parseFloat(e.target.value)})
-    }
+    };
     onSeekMouseUp = e => {
         this.setState({seeking: false})
         this.player.seekTo(parseFloat(e.target.value))
-    }
+    };
     onDuration = (duration) => {
         this.setState({duration})
-    }
+    };
     onProgress = state => {
         if (!this.state.seeking) {
             this.setState(state)
         }
-    }
+    };
     onClickTest = state => {
         console.log('tse onClickTest')
 
@@ -119,11 +113,8 @@ export default class Test extends React.Component {
     };
 
     render() {
-        const {musicurl, playing, volume, muted, loop, played, loaded, duration, playbackRate, programs} = this.state
-
-        var text = this.state.liked ? '喜欢' : '不喜欢';
-
-
+        const {musicurl, playing, played, loaded, duration, playbackRate, programs} = this.state
+        const text = this.state.liked ? '喜欢' : '不喜欢';
         const pgs = programs.filter((program) => {
             return program;
         }).map((program, index) =>
@@ -132,24 +123,20 @@ export default class Test extends React.Component {
 
                 <Card className={(this.state.programs[index].liveUrl === newState.music)
                     ? "card-test playing" : "card-test"}
-
                     // onClick={this.changeSong.bind(this, program)}
                       onClick={this.changeSongAll.bind(this, program)}
-                    // hoverable
                       style={{width: 240, height: 400, margin: 4,}}
-                      cover={
-                          <img style={{
+                      cover={<img style={{
                               border: '1px solid grey',
                               width: 240, height: 240, margin: 0
-                          }}
-                               src={program.imgPath}/>}
+                          }} src={program.imgPath}/>}
                       title={program.name}
                 ><Meta
                     description={program.intro}
                 />
 
                 </Card>
-                <h1>{(this.state.programs[index].liveUrl === newState.music) ? 'Play' : 'Pause '}</h1>
+                {/*<h1>{(this.state.programs[index].liveUrl === newState.music) ? 'Play' : 'Pause '}</h1>*/}
                 {/*<h1>newState.music: {newState.music}</h1>*/}
                 {/*<h3>{this.state.programs[index].liveUrl}</h3>*/}
 
@@ -157,13 +144,12 @@ export default class Test extends React.Component {
             </div>
         );
         return (
-
             <div>
                 <Layout>
 
                     <Sider style={{background: '#fff', margin: '10px'}}>
                         <div>
-                            <Clock tsee="asdf"></Clock>
+                            <Clock tsee="asdf"/>
                             <ReactPlayer width='10%'
                                          height='10%'
                                          ref={this.ref}

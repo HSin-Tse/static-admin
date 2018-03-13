@@ -52,12 +52,10 @@ const MULTIPLE_SOURCES = [
     { src: 'http://clips.vorwaerts-gmbh.de/big_buck_bunny.webm', type: 'video/webm' }
 ]
 
-@observer
-class AjmdPlayer extends Component {
-
+@observer class AjmdPlayer extends Component {
 
     state = {
-        url: '',
+        url: newState.music,
         playing: true,
         volume: 0.8,
         muted: false,
@@ -66,14 +64,14 @@ class AjmdPlayer extends Component {
         duration: 0,
         playbackRate: 1.0,
         loop: false
-    }
+    };
     load = url => {
         this.setState({
             url,
             played: 0,
             loaded: 0
         })
-    }
+    };
     playPause = () => {
         this.setState({ playing: !this.state.playing })
     }
@@ -319,8 +317,8 @@ class AjmdPlayer extends Component {
                     <table><tbody>
                     <tr>
                         <th>url</th>
-                        <td className={!url ? 'faded' : ''}>
-                            {(url instanceof Array ? 'Multiple' : url) || 'null'}
+                        <td className={!newState.music ? 'faded' : ''}>
+                            {(newState.music instanceof Array ? 'Multiple' : newState.music) || 'null'}
                         </td>
                     </tr>
                     <tr>
