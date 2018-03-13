@@ -1,16 +1,10 @@
 import React from 'react';
 import './index.less'
-// import axios from "axios";
-
-import ReactPlayer from 'react-player'
-import Clock from 'components/clock'
-import {Card, Button, Input, Progress, Layout, Tabs} from 'antd';
-import fetchJsonp from 'fetch-jsonp'
+import {Card, Tabs} from 'antd';
 import ILike from 'pages/ilike'
-
 import Test from 'pages/test'
+
 const {Meta} = Card;
-const {Sider, Content, Footer} = Layout;
 const TabPane = Tabs.TabPane;
 export default class Home extends React.Component {
     constructor(props) {
@@ -110,23 +104,20 @@ export default class Home extends React.Component {
                       hoverable
                       style={{width: 240, height: 400, margin: 10,}}
                       cover={<img style={{border: '1px solid grey', width: 240, height: 240, margin: 0}}
-                                  src={program.imgPath}></img>}
+                                  src={program.imgPath}/>}
                       title={program.name}
                 ><Meta
                     description={program.intro}
                 />
-
                 </Card>
             </div>
         );
         return (
-
             <div>
-                <Tabs defaultActiveKey="1">
+                <Tabs defaultActiveKey="2">
                     <TabPane tab="我喜欢" key="1"><ILike/></TabPane>
                     <TabPane tab="节目" key="2"><Test/></TabPane>
                 </Tabs>
-
             </div>
         )
     }

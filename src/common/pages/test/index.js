@@ -125,12 +125,6 @@ export default class Test extends React.Component {
 
 
         const pgs = programs.filter((program) => {
-            // if (program.liveUrl == newState.musicurl) {
-            //     program.playStatus=newState.musicurl
-            // } else {
-            //     program.playStatus=newState.musicurl
-            //
-            // }
             return program;
         }).map((program, index) =>
 
@@ -142,7 +136,6 @@ export default class Test extends React.Component {
                     // onClick={this.changeSong.bind(this, program)}
                       onClick={this.changeSongAll.bind(this, program)}
                     // hoverable
-
                       style={{width: 240, height: 400, margin: 4,}}
                       cover={
                           <img style={{
