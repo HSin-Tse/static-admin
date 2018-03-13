@@ -132,11 +132,12 @@ export default class Test extends React.Component {
             //
             // }
             return program;
-        }).map((program , index) =>
+        }).map((program, index) =>
 
             <div key={program.imgPath} style={{border: '1px solid grey'}}>
 
-                <Card className="card-test"
+                <Card className={(this.state.programs[index].liveUrl === newState.music)
+                    ? "card-test playing" : "card-test"}
 
                     // onClick={this.changeSong.bind(this, program)}
                       onClick={this.changeSongAll.bind(this, program)}
