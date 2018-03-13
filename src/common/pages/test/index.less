@@ -96,29 +96,53 @@
 }
 
 .card-test {
-  border-radius: 10%;
 
   //animation: myfirst 5s;
   //animation-iteration-count: 10;
   box-shadow: 10px 10px 5px #888888;
-  animation-name: myfirst;
+  //animation-name: myfirst;
+  //animation-duration: 3s;
+  //animation-timing-function: ease-in-out;
+  //animation-iteration-count: 1;
+  //animation-delay: 0s;
+  //animation-direction: normal;
+  //animation-fill-mode: initial;
+}
+
+.card-test:hover {
+  //animation: myfirst 2s;
+  //animation-iteration-count: infinite;
+
+  transform: scale(1.1, 1.1);
+  box-shadow: none;
+  background:red;
+  //transform: scale(0.9, 0.9);
+  z-index: 4;
+
+  animation-name: isPlaying;
   animation-duration: 3s;
   animation-timing-function: ease-in-out;
-  animation-iteration-count: 1;
+  animation-iteration-count: infinite;
   animation-delay: 0s;
   animation-direction: normal;
   animation-fill-mode: initial;
 }
 
-.card-test:hover {
-  //animation: myfirst 2s;
-  animation-iteration-count: infinite;
 
-  transform: scale(1.1, 1.1);
-  //transform: scale(0.9, 0.9);
-  z-index: 4;
+@keyframes isPlaying {
+
+  0% {
+    background: yellow;
+  }
+  50% {
+    background: orange;
+
+  }
+  100% {
+    background: yellow;
+  }
+
 }
-
 @keyframes myfirst {
 
   0% {

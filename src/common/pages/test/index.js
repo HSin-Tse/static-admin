@@ -35,7 +35,6 @@ export default class Test extends React.Component {
     }
 
 
-
     componentDidMount() {
 
 
@@ -87,7 +86,9 @@ export default class Test extends React.Component {
     changeSongAll = (program, e) => {
         // this.setState({musicurl: program.liveUrl})
 
-        {newState.setMusic(program.liveUrl)}
+        {
+            newState.setMusic(program.liveUrl)
+        }
     };
 
 
@@ -115,28 +116,50 @@ export default class Test extends React.Component {
     };
     ref = player => {
         this.player = player
-    }
+    };
 
     render() {
         const {musicurl, playing, volume, muted, loop, played, loaded, duration, playbackRate, programs} = this.state
 
         var text = this.state.liked ? '喜欢' : '不喜欢';
-        const pgs = programs.map((program) =>
-            <div key={program.imgPath}  style={{border: '1px solid grey'}}>
+
+
+        const pgs = programs.filter((program) => {
+            // if (program.liveUrl == newState.musicurl) {
+            //     program.playStatus=newState.musicurl
+            // } else {
+            //     program.playStatus=newState.musicurl
+            //
+            // }
+            return program;
+        }).map((program , index) =>
+
+            <div key={program.imgPath} style={{border: '1px solid grey'}}>
+
                 <Card className="card-test"
 
-                      // onClick={this.changeSong.bind(this, program)}
+                    // onClick={this.changeSong.bind(this, program)}
                       onClick={this.changeSongAll.bind(this, program)}
-                      hoverable
+                    // hoverable
+
                       style={{width: 240, height: 400, margin: 4,}}
-                      cover={<img style={{border: '1px solid grey', width: 240, height: 240, margin: 0}}
-                                  src={program.imgPath}></img>}
+                      cover={
+                          <img style={{
+                              border: '1px solid grey',
+                              width: 240, height: 240, margin: 0
+                          }}
+                               src={program.imgPath}/>}
                       title={program.name}
                 ><Meta
                     description={program.intro}
                 />
 
                 </Card>
+                <h1>{(this.state.programs[index].liveUrl === newState.music) ? 'Play' : 'Pause '}</h1>
+                {/*<h1>newState.music: {newState.music}</h1>*/}
+                {/*<h3>{this.state.programs[index].liveUrl}</h3>*/}
+
+
             </div>
         );
         return (
@@ -182,9 +205,9 @@ export default class Test extends React.Component {
                     <Layout>
                         <Content>
                             <Button onClick={this.playPause}>{playing ? 'Pause' : 'Play'}</Button>
+                            <h1>newState.music: {newState.music}</h1>
 
                             <div className="flex">
-
                                 {pgs}
                             </div>
                         </Content>
