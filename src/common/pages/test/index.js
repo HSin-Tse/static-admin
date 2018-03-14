@@ -10,8 +10,8 @@ import {newState} from "../../../client/netdevTools";
 
 const {Meta} = Card;
 const {Sider, Content} = Layout;
-@observer
-export default class Test extends React.Component {
+
+@observer  export default class Test extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
