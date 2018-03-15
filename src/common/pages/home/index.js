@@ -3,6 +3,7 @@ import './index.less'
 import {Card, Tabs} from 'antd';
 import ILike from 'pages/ilike'
 import Test from 'pages/test'
+import Classify from 'pages/classify'
 
 const {Meta} = Card;
 const TabPane = Tabs.TabPane;
@@ -114,10 +115,10 @@ export default class Home extends React.Component {
         );
         return (
             <div>
-                <Tabs defaultActiveKey="3">
-                    <TabPane tab="我喜欢" key="1"><ILike/></TabPane>
-                    <TabPane tab="节目" key="2"><Test/></TabPane>
-                    <TabPane tab="节目" key="3"><Calculator/></TabPane>
+                <Tabs defaultActiveKey="2">
+                    <TabPane tab="精选" key="1"><ILike/></TabPane>
+                    <TabPane tab="分类" key="2"><Classify/></TabPane>
+                    <TabPane tab="电台" key="3"><Test/></TabPane>
                 </Tabs>
             </div>
         )

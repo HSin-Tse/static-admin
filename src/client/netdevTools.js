@@ -22,6 +22,7 @@ class MyState {
         aaa: "MyState",
     };
     @observable music = '';
+    @observable pid = '';
     // @action addNum = () => {
     //     this.num++;
     // };
@@ -30,6 +31,9 @@ class MyState {
     };
     @action setMusic = (oo) => {
         this.music = oo
+    };
+    @action setPid = (oo) => {
+        this.pid = oo
     };
 }
 
@@ -66,6 +70,10 @@ class AjmdPlayer extends Component {
         playbackRate: 1.0,
         loop: false
     };
+
+
+
+
     load = url => {
         this.setState({
             url,
@@ -73,6 +81,23 @@ class AjmdPlayer extends Component {
             loaded: 0
         })
     };
+    //ex: pid  10062
+    playProgram = (pid) => {
+
+        axios.get('http://a.ajmide.com/v7/get_play_list.php', {
+            params: {
+                id: pid,
+                t: 'p'
+            }
+        }).then( (response) => {
+            console.log(response);
+            newState.setMusic( response.data.data[0].liveUrl)
+
+        }).catch(function (error) {
+            console.log(error);
+        });
+
+    }
     playPause = () => {
         this.setState({playing: !this.state.playing})
     }

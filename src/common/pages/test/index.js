@@ -190,7 +190,7 @@ const {Sider, Content} = Layout;
                             <div className="flex">
                                 {pgs}
                             </div>
-                        </Content>是
+                        </Content>
                     </Layout>
                 </Layout>
             </div>
