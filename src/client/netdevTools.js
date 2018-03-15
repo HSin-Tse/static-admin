@@ -143,9 +143,20 @@ class AjmdPlayer extends Component {
         const SEPARATOR = ' · '
 
         return (
-            <div className='app'>
-                <section className='section'>
+            <div className='app '>
+                <div>
                     <h1>ReactPlayer Demo</h1>
+
+                </div>
+                <div>
+                    <h1>Played</h1>
+                    <progress max={1} value={played}/>
+                </div>
+                <div>
+                    <Progress type="circle" percent={Math.ceil(played * 100)}/>
+
+                </div>
+                <section className='section'>
                     <div className='player-wrapper'>
                         <ReactPlayer
                             ref={this.ref}
@@ -170,74 +181,60 @@ class AjmdPlayer extends Component {
                             onDuration={this.onDuration}
                         />
                     </div>
-
-                    <table>
-                        <tbody>
-                        <tr>
-                            <th>Controls</th>
-                            <td>
-                                <Button onClick={this.stop}>Stop</Button>
-                                <Button onClick={this.playPause}>{playing ? 'Pause' : 'Play'}</Button>
-                                {/*<button onClick={this.onClickFullscreen}>Fullscreen</button>*/}
-                                <Button onClick={this.setPlaybackRate} value={1}>1</Button>
-                                <Button onClick={this.setPlaybackRate} value={1.5}>1.5</Button>
-                                <Button onClick={this.setPlaybackRate} value={2}>2</Button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>Seek</th>
-                            <td>
-                                <input
-                                    type='range' min={0} max={1} step='any'
-                                    value={played}
-                                    onMouseDown={this.onSeekMouseDown}
-                                    onChange={this.onSeekChange}
-                                    onMouseUp={this.onSeekMouseUp}
-                                />
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>Volume</th>
-                            <td>
-                                <input type='range' min={0} max={1} step='any' value={volume}
-                                       onChange={this.setVolume}/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                <label htmlFor='muted'>Muted</label>
-                            </th>
-                            <td>
-                                <input id='muted' type='checkbox' checked={muted} onChange={this.toggleMuted}/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                <label htmlFor='loop'>Loop</label>
-                            </th>
-                            <td>
-                                <input id='loop' type='checkbox' checked={loop} onChange={this.toggleLoop}/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>Played</th>
-                            <td>
-                                <progress max={1} value={played}/>
-                            </td>
-                            <Progress type="circle" percent={Math.ceil(played * 100)}/>
-
-                        </tr>
-                        <tr>
-                            <th>Loaded</th>
-                            <td>
-                                <progress max={1} value={loaded}/>
-                            </td>
-                            <Progress type="circle" percent={Math.ceil(loaded * 100)}/>
-
-                        </tr>
-                        </tbody>
-                    </table>
                 </section>
+                <div>
+                    <h1>Loaded</h1>
+                    <progress max={1} value={loaded}/>
+                </div>
+                <div>
+                    <Progress type="circle" percent={Math.ceil(loaded * 100)}/>
+                </div>
+                <section className='section'>
+                    <Button onClick={this.stop}>Stop</Button>
+                    <Button onClick={this.playPause}>{playing ? 'Pause' : 'Play'}</Button>
+                    <Button onClick={this.setPlaybackRate} value={1}>1</Button>
+                    <Button onClick={this.setPlaybackRate} value={1.5}>1.5</Button>
+                    <Button onClick={this.setPlaybackRate} value={2}>2</Button>
+                </section>
+
+                <section className='section'>
+                    <tr>
+                        <th>Seek</th>
+                        <td>
+                            <input
+                                type='range' min={0} max={1} step='any'
+                                value={played}
+                                onMouseDown={this.onSeekMouseDown}
+                                onChange={this.onSeekChange}
+                                onMouseUp={this.onSeekMouseUp}
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Volume</th>
+                        <td>
+                            <input type='range' min={0} max={1} step='any' value={volume}
+                                   onChange={this.setVolume}/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <label htmlFor='muted'>Muted</label>
+                        </th>
+                        <td>
+                            <input id='muted' type='checkbox' checked={muted} onChange={this.toggleMuted}/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <label htmlFor='loop'>Loop</label>
+                        </th>
+                        <td>
+                            <input id='loop' type='checkbox' checked={loop} onChange={this.toggleLoop}/>
+                        </td>
+                    </tr>
+                </section>
+
                 <section className='section'>
 
 
@@ -272,27 +269,20 @@ class AjmdPlayer extends Component {
                             <td>{loaded.toFixed(3)}</td>
                         </tr>
                         <tr>
-                            <th>duration</th>
+                            <th>總長</th>
                             <td><Duration seconds={duration}/></td>
                         </tr>
                         <tr>
-                            <th>elapsed</th>
+                            <th>時間</th>
                             <td><Duration seconds={duration * played}/></td>
                         </tr>
                         <tr>
-                            <th>remaining</th>
+                            <th>剩下</th>
                             <td><Duration seconds={duration * (1 - played)}/></td>
                         </tr>
                         </tbody>
                     </table>
                 </section>
-                {/*<footer className='footer'>*/}
-                {/*Version <strong>{version}</strong>*/}
-                {/*{SEPARATOR}*/}
-                {/*<a href='https://github.com/CookPete/react-player'>GitHub</a>*/}
-                {/*{SEPARATOR}*/}
-                {/*<a href='https://www.npmjs.com/package/react-player'>npm</a>*/}
-                {/*</footer>*/}
             </div>
         )
     }
@@ -312,7 +302,6 @@ class Tse extends React.Component {
     };
 
 
-
     render() {
         return (
             <div>
@@ -322,7 +311,7 @@ class Tse extends React.Component {
                 <div>
                     {/*<ReactJson src={newState.res}/>*/}
 
-                    <AjmdPlayer ></AjmdPlayer>
+                    <AjmdPlayer></AjmdPlayer>
 
                 </div>
 

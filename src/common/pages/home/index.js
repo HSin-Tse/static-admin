@@ -114,11 +114,50 @@ export default class Home extends React.Component {
         );
         return (
             <div>
-                <Tabs defaultActiveKey="2">
+                <Tabs defaultActiveKey="3">
                     <TabPane tab="我喜欢" key="1"><ILike/></TabPane>
                     <TabPane tab="节目" key="2"><Test/></TabPane>
+                    <TabPane tab="节目" key="3"><Calculator/></TabPane>
                 </Tabs>
             </div>
         )
+    }
+}
+function Welcome(props) {
+    return <h1>Hello, {props.name}</h1>;
+}
+
+const BoilingVerdict = (props) => {
+    if (props.celsius >= 100) {
+        return <p>水会烧开</p>;
+    }
+    return <p>水不会烧开</p>;
+};
+
+class Calculator extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.handleChange = this.handleChange.bind(this);
+        this.state = {temperature: ''};
+    }
+
+    handleChange(e) {
+        this.setState({temperature: e.target.value});
+    }
+
+    render() {
+        const temperature = this.state.temperature;
+        return (
+            <fieldset>
+                <legend>输入一个摄氏温度</legend>
+                <input
+                    value={temperature}
+                    onChange={this.handleChange} />
+
+                <BoilingVerdict celsius={parseFloat(temperature)} />
+
+            </fieldset>
+        );
     }
 }

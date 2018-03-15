@@ -184,13 +184,13 @@ const {Sider, Content} = Layout;
                     </Sider>
                     <Layout>
                         <Content>
-                            <Button onClick={this.playPause}>{playing ? 'Pause' : 'Play'}</Button>
+                            {/*<Button onClick={this.playPause}>{playing ? 'Pause' : 'Play'}</Button>*/}
                             <h1>newState.music: {newState.music}</h1>
 
                             <div className="flex">
                                 {pgs}
                             </div>
-                        </Content>
+                        </Content>是
                     </Layout>
                 </Layout>
             </div>
