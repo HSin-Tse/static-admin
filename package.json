@@ -14,6 +14,7 @@
     "moment": "^2.18.1",
     "photoswipe": "^4.1.2",
     "prop-types": "^15.5.10",
+    "qrcode.react": "^0.8.0",
     "react": "^16.2.0",
     "react-dock": "^0.2.4",
     "react-dom": "^16.2.0",
@@ -24,10 +25,12 @@
     "react-router": "^4.1.1",
     "react-router-dom": "^4.1.1",
     "react-router-redux": "^5.0.0-alpha.9",
+    "react-seo": "^1.0.11",
     "redux": "^3.6.0",
     "redux-actions": "^2.0.3",
     "redux-slider-monitor": "^2.0.0-1",
-    "screenfull": "^3.3.2"
+    "screenfull": "^3.3.2",
+    "styled-components": "^3.2.3"
   },
   "devDependencies": {
     "autoprefixer": "7.1.2",

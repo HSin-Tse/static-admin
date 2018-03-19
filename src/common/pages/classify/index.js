@@ -8,7 +8,45 @@ import {observer} from "mobx-react/index";
 import axios from "axios/index";
 import {List, Avatar} from 'antd';
 import {Row, Col} from 'antd';
+import styled from 'styled-components';
+var QRCode = require('qrcode.react');
 // http://a.ajmide.com/v7/get_play_list.php?id=10062&t=p
+
+// const Title = styled.h1`
+//     font-size: 1.5em;
+//     text-align: center;
+//     color: palevioletred;
+// `;
+const TitleTag = styled.h1`
+    font-size: 1.5em;
+    text-align: center;
+    color: ${props => props.primary ? 'SteelBlue' : 'palevioletred'};
+
+ 
+    &:hover {
+        background-color: #ddd;
+    }
+ 
+`;
+const Title = styled.h1`
+    font-size: 1.5em;
+    text-align: center;
+    color: ${props => props.primary ? 'SteelBlue' : 'palevioletred'};
+`;
+
+// class Title extends React.Component {
+//     render() {
+//         const className = `title${this.props.primary ? ' title-primary' : ''}`;
+//         return (
+//             <div className={className}>{this.props.children}
+//
+//                 <h1>Style: {className}</h1>
+//
+//             </div>
+//         );
+//     }
+// }
+
 @observer export default class Classify extends React.Component {
 
     constructor(props) {
@@ -93,6 +131,15 @@ import {Row, Col} from 'antd';
 
         return (
             <div>
+                <h1 style="color:red;font-size:46px;">Hello World
+                  </h1>
+                <div>
+                    <Title >Normal</Title>
+                </div>
+                <Title primary>primary</Title>
+                <TitleTag>Normal</TitleTag>
+                <TitleTag primary>primary</TitleTag>
+                <QRCode value="http://facebook.github.io/react/" />,
                 <div>
                     <Row>
                         <Col span={12} style={{ background:"red"}}>
@@ -112,8 +159,7 @@ import {Row, Col} from 'antd';
                         <Col span={6}>col-6</Col>
                     </Row>
                     <Row>
-                        <Col span={2}
-                             height="30px"
+                        <Col span={2} height="30px"
                         >
                             <List
                                 height={"30px"}
